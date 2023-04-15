@@ -1,0 +1,19 @@
+************ DOC ************
+https://grpc.io/docs/languages/go/quickstart/
+
+
+CRIA ESTRUTURA GRPC...
+protoc --go_out=. --go-grpc_out=.  proto/course_category.proto
+
+
+******** EVANS ********
+https://github.com/ktr0731/evans#macos
+
+If your server is enabling gRPC reflection, you can launch Evans with only -r (--reflection) option.
+evans -r repl
+call
+
+
+******** SQLITE3 ********
+entrar no CLI => sqlite3 <db-name>
+create table categories (id string, name string, description string);
