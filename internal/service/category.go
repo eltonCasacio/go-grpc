@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"io"
 
 	"github.com/eltonCasacio/go-grpc/internal/database"
 	"github.com/eltonCasacio/go-grpc/internal/pb"
@@ -60,4 +61,54 @@ func (c *CategoryService) GetCategory(ctx context.Context, in *pb.GetCategoryReq
 		Name:        category.Name,
 		Description: category.Description,
 	}, nil
+}
+
+func (c *CategoryService) CreateCategoryStream(stream pb.CategoryService_CreateCategoryStreamServer) error {
+	categories := &pb.CategoriesResponse{}
+	for {
+		category, err := stream.Recv()
+		if err == io.EOF {
+			return stream.SendAndClose(categories)
+		}
+		if err != nil {
+			return err
+		}
+
+		categoryCreated, err := c.db.Create(category.Name, category.Description)
+		if err != nil {
+			return err
+		}
+
+		categories.Categories = append(categories.Categories, &pb.Category{
+			ID:          categoryCreated.ID,
+			Name:        categoryCreated.Name,
+			Description: categoryCreated.Description,
+		})
+	}
+}
+
+func (c *CategoryService) CreateCategoryBidirectional(stream pb.CategoryService_CreateCategoryBidirectionalServer) error {
+	for {
+		category, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+
+		categoryCreated, err := c.db.Create(category.Name, category.Description)
+		if err != nil {
+			return err
+		}
+
+		err = stream.Send(&pb.Category{
+			ID:          categoryCreated.ID,
+			Name:        categoryCreated.Name,
+			Description: categoryCreated.Description,
+		})
+		if err != nil {
+			return err
+		}
+	}
 }
