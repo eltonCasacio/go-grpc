@@ -24,7 +24,7 @@ See [gRPC Concepts](CONCEPTS.md)
 
 ## About this repository
 
-This is a simple server that allows register courses and categories. (CRUD)
+This is a simple CRUD to register courses and categories through the gRPC communication.
 
 ## Run this project
 To execute this project we'll use Evans and Sqlite <br />
