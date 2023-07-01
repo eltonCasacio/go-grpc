@@ -34,10 +34,11 @@ if you dont't have Evens installed, see: https://github.com/ktr0731/evans#docker
 So, let's start
 
 - clone this repository
-- enter into project and run `go mod tidy`
+- into project run `go mod tidy`
 - create database and tables
-- - `sqlite3 db.sqlite`
+  - `sqlite3 db.sqlite`
   - `create table categories (id string, name string, description string);`
+  - `create table courses (id string, name string, description string, category_id string);`
 - start go server, `go run cmd/server/main.go`
 - start evans by running: `evans -r repl`
 
