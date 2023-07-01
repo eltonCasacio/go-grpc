@@ -27,40 +27,19 @@ See [gRPC Concepts](CONCEPTS.md)
 This is a simple server that allows register courses and categories. (CRUD)
 
 ## Run this project
-To execute this project some dependencies is necessary, Evans and Sqlite <br />
+To execute this project we'll use Evans and Sqlite <br />
 
-if you dont't hava Evens installed, you can just run <code>go install github.com/ktr0731/evans@latest</code><br />
-See: https://github.com/ktr0731/evans#docker-image
+if you dont't have Evens installed, see: https://github.com/ktr0731/evans#docker-image
 
 So, let's start
-<ol>
-  <li>clone this repository</li>
-  <li>enter into project and run <code>go mod tidy</code></li>
-  <li>create database and tables...</li>
-  <li>start go server, <code>go run cmd/server/main.go</code></li>
-  <li>start evans by running: <code>evans -r repl</code></li>
-</ol>
 
-
-## Some used commands
-
-create struct gRPC
-- protoc --go_out=. --go-grpc_out=.  proto/course_category.proto
-
-
-evans
-- https://github.com/ktr0731/evans#macos
-
-- If your server is enabling gRPC reflection, you can launch Evans with only -r (--reflection) option.
-evans -r repl
-call
-
-
-sqlite
-- sqlite3 db.sqlite
-- create table categories (id string, name string, description string);
-
-
+- clone this repository
+- enter into project and run `go mod tidy`
+- create database and tables
+- - `sqlite3 db.sqlite`
+  - `create table categories (id string, name string, description string);`
+- start go server, `go run cmd/server/main.go`
+- start evans by running: `evans -r repl`
 
 
 
