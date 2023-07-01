@@ -37,8 +37,8 @@ So, let's start
   <li>clone this repository</li>
   <li>enter into project and run <code>go mod tidy</code></li>
   <li>create database and tables...</li>
-  <li>start go server, <code>go run cmd/server</code></li>
-  <li>start evans by running: <code></code></li>
+  <li>start go server, <code>go run cmd/server/main.go</code></li>
+  <li>start evans by running: <code>evans -r repl</code></li>
 </ol>
 
 
@@ -57,7 +57,7 @@ call
 
 
 sqlite
-- sqlite3 <db-name>
+- sqlite3 db.sqlite
 - create table categories (id string, name string, description string);
 
 
