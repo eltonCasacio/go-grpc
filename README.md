@@ -26,12 +26,38 @@ See [gRPC Concepts](CONCEPTS.md)
 
 This is a simple CRUD to register courses and categories through the gRPC communication.
 
-## Run this project
-To execute this project we'll use Evans and Sqlite <br />
+## Running project
+### Prerequisites
+- Go, any one of the three latest major [releases of Go](https://golang.org/doc/devel/release.html).
+  
+  For installation instructions, see Go’s [Getting Started](https://golang.org/doc/install) guide.
 
-if you dont't have Evens installed, see: https://github.com/ktr0731/evans#docker-image
+- [Protocol buffer](https://developers.google.com/protocol-buffers) compiler, protoc, [version 3](https://protobuf.dev/programming-guides/proto3).
 
-So, let's start
+  For installation instructions, see Protocol Buffer Compiler Installation.
+
+- Go plugins for the protocol compiler:
+
+1. Install the protocol compiler plugins for Go using the following commands:
+
+    > `go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28`
+    > 
+    > `go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2`
+
+2. Update your PATH so that the protoc compiler can find the plugins:
+
+    > `export PATH="$PATH:$(go env GOPATH)/bin"`
+
+- Evans
+
+  For simulation client.
+
+  see installation: https://github.com/ktr0731/evans#docker-image
+
+- Sqlite
+  For database
+
+### So, let's go
 
 - clone this repository
 - into project run `go mod tidy`
