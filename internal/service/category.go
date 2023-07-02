@@ -5,7 +5,7 @@ import (
 	"io"
 
 	"github.com/eltonCasacio/go-grpc/internal/database"
-	"github.com/eltonCasacio/go-grpc/internal/pb"
+	pb "github.com/eltonCasacio/go-grpc/internal/pb/category"
 )
 
 type CategoryService struct {

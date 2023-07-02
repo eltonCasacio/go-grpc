@@ -80,3 +80,22 @@ func (c *Course) FindByCategoryID(categoryID string) ([]Course, error) {
 	}
 	return courses, nil
 }
+
+func (c *Course) FindByID(id string) (Course, error) {
+	course := Course{}
+	c.db.QueryRow("SELECT id, name, description, category_id FROM courses WHERE id = $1", id).Scan(&course.ID, &course.Name, &course.Description, &course.CategoryID)
+	err := c.db.QueryRow("SELECT id, name, description, category_id FROM courses WHERE id = $1", id).Scan(&course.ID, &course.Name, &course.Description, &course.CategoryID)
+	if err != nil {
+		return Course{}, err
+	}
+	return course, nil
+}
+
+func (c *Course) DeleteCourse(id string) error {
+	rows, err := c.db.Query("DELETE FROM courses WHERE id = $1", id)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	return nil
+}

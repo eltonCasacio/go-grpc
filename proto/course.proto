@@ -1,0 +1,34 @@
+syntax = "proto3";
+package pb;
+option go_package = "internal/pb/course";
+
+message blankCourse {}
+
+message CourseID {
+    string ID = 1;
+}
+
+message NewCourse {
+    string Name = 1;
+    string Description = 2;
+    string Category_id = 3;
+}
+
+message Course {
+    string ID = 1;
+    string Name = 2;
+    string Description = 3;
+    string Category_id = 4;
+}
+
+message CoursesResponse {
+    repeated Course Courses = 1;
+}
+
+service CourseService {
+    rpc CreateCourse(NewCourse) returns (Course){}
+    rpc GetCourses(blankCourse) returns (CoursesResponse) {}
+    rpc GetCourseByID(CourseID) returns (Course){}
+    rpc DeleteCourse(CourseID) returns (blankCourse){}
+    rpc UpdateCourse(Course) returns (Course){}
+}

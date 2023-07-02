@@ -6,7 +6,8 @@ import (
 	"net"
 
 	"github.com/eltonCasacio/go-grpc/internal/database"
-	"github.com/eltonCasacio/go-grpc/internal/pb"
+	pbCategory "github.com/eltonCasacio/go-grpc/internal/pb/category"
+	pbCourse "github.com/eltonCasacio/go-grpc/internal/pb/course"
 	"github.com/eltonCasacio/go-grpc/internal/service"
 	_ "github.com/mattn/go-sqlite3"
 	"google.golang.org/grpc"
@@ -23,8 +24,12 @@ func main() {
 	categoryDB := database.NewCategory(db)
 	categoryService := service.NewCategoryService(*categoryDB)
 
+	courseDB := database.NewCourse(db)
+	courseService := service.NewCourseService(*courseDB)
+
 	grpcServer := grpc.NewServer()
-	pb.RegisterCategoryServiceServer(grpcServer, categoryService)
+	pbCategory.RegisterCategoryServiceServer(grpcServer, categoryService)
+	pbCourse.RegisterCourseServiceServer(grpcServer, courseService)
 	reflection.Register(grpcServer)
 
 	lis, err := net.Listen("tcp", ":50051")

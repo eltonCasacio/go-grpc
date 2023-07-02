@@ -1,6 +1,6 @@
 syntax = "proto3";
 package pb;
-option go_package = "internal/pb";
+option go_package = "internal/pb/category";
 
 message blanks{}
 
@@ -16,7 +16,7 @@ message NewCategoryRequest {
 }
 
 message CategoriesResponse {
-    repeated Category categories = 1;
+    repeated Category Categories = 1;
 }
 
 message GetCategoryRequest {
@@ -30,3 +30,5 @@ service CategoryService {
     rpc Categories(blanks) returns (CategoriesResponse) {}
     rpc GetCategory(GetCategoryRequest) returns (Category) {}
 }
+
+
