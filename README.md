@@ -38,13 +38,13 @@ This is a simple CRUD to register courses and categories through the gRPC commun
 
 - Go plugins for the protocol compiler:
 
-1. Install the protocol compiler plugins for Go using the following commands:
+  - Install the protocol compiler plugins for Go using the following commands:
 
     > `go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28`
     > 
     > `go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2`
 
-2. Update your PATH so that the protoc compiler can find the plugins:
+  - Update your PATH so that the protoc compiler can find the plugins:
 
     > `export PATH="$PATH:$(go env GOPATH)/bin"`
 
@@ -67,3 +67,7 @@ This is a simple CRUD to register courses and categories through the gRPC commun
   - `create table courses (id string, name string, description string, category_id string);`
 - start go server, `go run cmd/server/main.go`
 - start evans by running: `evans -r repl`
+  
+***You can also run the project through the docker-compose***
+
+So you'll need run `export PATH="$PATH:$(go env GOPATH)/bin"` into container
