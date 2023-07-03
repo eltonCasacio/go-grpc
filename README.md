@@ -67,6 +67,3 @@ This is a simple CRUD to register courses and categories through the gRPC commun
   - `create table courses (id string, name string, description string, category_id string);`
 - start go server, `go run cmd/server/main.go`
 - start evans by running: `evans -r repl`
-
-
-
